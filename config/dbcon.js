@@ -10,4 +10,4 @@ const connetDB = async() =>{
     }
 }
 
-module.exports = connetDB
+module.exports = connetDB 

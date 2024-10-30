@@ -62,7 +62,7 @@
     }
     #tray{
 
-      top: 15%;
+      top: 35%;
       width: 40%;
       position: absolute;
       right: 0%;;
@@ -155,7 +155,7 @@
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="/users">Home</a></li>
+          <li><a href="/">Home</a></li>
           <li><a href="/about">About</a></li>
           <li><a href="/galery">Galery</a></li>
           <li><a href="/services">Services</a></li>
@@ -224,106 +224,11 @@
    <%});%>  </section>  
 
 
-<!-- 
-   <ul>
-    <% services.forEach(function(service) { %>
-      <li>
-        <h3><%= service.blogtitle %></h3>
-        <p>Price: <%= service.blogcategory %></p>
-      
-      </li>
-    <% }); %>
-  </ul> -->
+
   
   </main>
   <script>
-       // function to display cart product
-      //  let display = document.getElementById('services._id')
-      //  console.log(display);
-      //  function addcart(pdtid){
-      //   console.log(pdtid); 
-      // }<script>
-  
-  // window.onload = function(){
-  //   let productray = JSON.parse(localStorage.getItem("cartitem"))
-  //   let itemNos = document.getElementById("badge")
-  //   if(productray == null || productray == undefined){
-  //     itemNos.innerText = 0
-  //     console.log("no item in the cart")
-  //   }else{
-  //     pdtcounts =  productray.length
-  //     // get item from localstorage
-  //     itemNos.innerText = pdtcounts
-  //   }
-    
-  // }
-
-
-  // document.addEventListener('DOMContentLoaded', function() {
-  //   // Get all the "Add to Cart" buttons
-  //   const addToCartButtons = document.querySelectorAll('.add-to-cart');
-
-  //   // Loop through each button and add a click event listener
-  //   addToCartButtons.forEach(button => {
-  //     button.addEventListener('click', function(e) {
-  //       e.preventDefault();  // Prevent the default action (like submitting a form)
-
-  //       // Get the product ID from the button's data-id attribute
-  //       const productId = this.getAttribute('id');
-  //       $.ajax({
-  //         type:"GET",
-  //         url:"/cart",
-  //        // data: JSON.stringify({productId:productId}),
-  //         success:function(data){
-  //           let carts = []
-  //           let cartitems = JSON.parse(data)
-  //           let productray = JSON.parse(localStorage.getItem("cartitem"))
-  //           cartitems.forEach(cartitem =>{
-  //             if(productId == cartitem._id){
-  //               if(productray == null || productray == undefined){
-  //                 carts.push(cartitem)
-  //                 localStorage.setItem("cartitem", JSON.stringify(carts))
-  //                 location.reload()
-  //               }else{
-  //                 console.log(productray);
-  //                 productray.push(cartitem)
-                  
-  //                 localStorage.setItem("cartitem", JSON.stringify(productray))
-               
-  //                 location.reload()
-  //                 alert("item added")
-                  
-  //                 // alert("product exists")
-  //               }
-           
-                
-  //             }
-              
-  //           })
-  //         }
-  //       })
-
-  //       // Log the product ID to the console (you should see this in your browser's console)
-  //       console.log('Product ID:', productId);
-  //     });
-  //   });
-  // });
-
  
-//   const carticons = document.getElementById("carticon")
-//   carticons.addEventListener("click", (e)=>{
-//     e.preventDefault()
-//     $.ajax({
-//         method : "GET",
-//         url: "/cart",
-//         success : function(data)
-//         {
-//             console.log($("#forms").html(data))
-//         }
-// })
-//   })
-
-//tryout
 
  
 window.onload = function(){

@@ -37,6 +37,18 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 </head>
+<style>
+  #blog{width: 25vw;}
+  @media (max-width: 800px) {
+    #section{
+      width: 80vw;
+      
+    }
+    #blog{
+      width: 100vw;
+    }
+  }
+</style>
 
 <body class="about-page">
 
@@ -78,7 +90,7 @@
       <section id="section" style="margin-left: 10%;">
     
         <% about.forEach (about =>{%>
-            <div class="card mb-4" style="width: 25vw;">
+            <div class="card mb-4" id="blog">
               <img src="<%= about.blogimg%>" alt="blogimage content">  
          
          <b><%= about.blogauthor%></b>

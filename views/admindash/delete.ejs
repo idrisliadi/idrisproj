@@ -17,7 +17,7 @@
     } */
   </style>
     <section id="section" class="container" >
-        <% blog.forEach (blog=>{%>
+        <% blog.forEach (blog=>{%>o
        <div class="card" style="width: 28rem;">
        
           <img src="<%= blog.blogimg%>" class="card-img-top " alt="...">
@@ -33,11 +33,16 @@
     <input type="hidden" name="id" value="<%= blog._id %>">
     <button data-id="<%= blog._id%>">Delete blog</button>
   </form>
+  
    
           </div>
           </div>
           
         </div>
+        
        <%});%>  </section>  
+
+    
+       
 </body>
 </html>

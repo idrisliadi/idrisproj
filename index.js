@@ -7,7 +7,8 @@ const dotenv = require("dotenv")
 const ejs = require("ejs")
 const session = require ("express-session")
 const mongodb = require("mongodb")
-const axios = require('axios');
+const news = require("./Model/new")
+// const axios = require('axios');
 server.use(
     session({
         secret: "keyboard cat",// prevent unauthhorized access too user session
@@ -20,16 +21,17 @@ const jwt = require("jsonwebtoken")
 const mongoose = require("mongoose")
 const multer = require  ("multer")
 const nodemailer = require("nodemailer")
-const user = require("./Model/User")
+
 const adminschema = require("./Model/admin")
-const blog = require("./Model/Blog")
+const blog = require("./Model/blog")
 const authenticate = require("./middleware/authenticate");
 const path = require("path")
 const bodyParser = require("body-parser")
 const adminauth= require("./middleware/adminauth");
 const UserfeedSchema = require("./Model/userfeed")
 const crypto = require("crypto")
-const Userfeed = ("UserfeedSchema")
+const user = require("./Model/user")
+
 dotenv.config(),
 // server.use(cors())
 server.set("views", path.join(__dirname,"views"))
@@ -67,8 +69,8 @@ const storage = multer.diskStorage({
 })
 
 //activate multer storage setting
-const upload = multer({storage:storage})
 
+const upload = multer({storage:storage})
 //connection of databa 
 connectDB()
 
@@ -77,7 +79,7 @@ connectDB()
             res.render("register")
  })
  server.post("/register", async (req,res)=>{ 
-            const name = req.body.name;
+            const name = req.body.name.trim();
             const email = req.body.email;
             const password = req.body.password;
             const cpassword = req.body.cpassword;
@@ -93,7 +95,7 @@ connectDB()
                         const profile = {  
                             name : name,
                             email: email,
-                            isAdmin : false,
+                            isAdmin : false, 
                             password : hash,
                             cpassword : cpassword
                         }
@@ -146,6 +148,7 @@ server.get("/createblog", (req,res)=>{
         newBlog = blog.create(blogContent)
         if(newBlog){
         res.render("admindash/index", {error:error})}
+        console.log(result)
     }
     catch(error){
         console.log(error)
@@ -263,14 +266,14 @@ server.get("/contact", (req,res)=>{
 server.post("/contact", async (req,res)=>{
     name = req.body.name.trim()
     const email = req.body.email.trim();
-    const message = req.body.message.trim();
+    
     if (!name || !email || !message){
         return res.status(422).json({error : "please fill the data"});
     }
     const feed = await UserfeedSchema.create({
         name : name,
         email : email,
-        message : message
+      
     });  res.render("contact")
    
 })
@@ -329,7 +332,7 @@ server.get("/projects",async(req,res)=>{
 
 
 //load the user page
-server.get("/users", (req,res)=>{
+server.get("", (req,res)=>{
     res.render("index")
 })
 //view services on user end point
@@ -458,7 +461,7 @@ server.get("/payment",(req,res)=>{
             if (savedUser["email"] == email) {
                 bcrypt.compare(password, savedUser.password).then((doMatch) => {
                     if (doMatch) {
-                        const token = jwt.sign({ _id: savedUser._id }, "secretkey");
+                        const token = jwt.sign({ _id: savedUser._id }, "secretkey", { expiresIn: '1h' });
                         const { _id, name, email } = savedUser;
                         res.cookie("token", token, {httpOnly: true})
                         req.session.user = token
@@ -470,6 +473,7 @@ server.get("/payment",(req,res)=>{
                 });
             }  
         }
+        
         else{
             const token = jwt.sign({ _id: savedUser._id }, "secretkey");
                         const { _id, name, email } = savedUser;

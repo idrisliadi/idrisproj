@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const blog = require("../Model/Blog")
+const blog = require("../Model/blog")
 const authenticateToken = (req, res, next) => {
     // Extract token from cookies
     const token = req.cookies.token;

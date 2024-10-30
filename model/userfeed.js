@@ -8,10 +8,6 @@ const UserfeedSchema = new mongoose.Schema({
         type : String,
         required : true,
     },
-    message: {
-        type : String,
-        required : true,
-    }
 });
 module.exports = mongoose.model("Userfeed", UserfeedSchema)
     
