@@ -7,7 +7,7 @@ const dotenv = require("dotenv")
 const ejs = require("ejs")
 const session = require ("express-session")
 const mongodb = require("mongodb")
-const news = require("./Model/new")
+
 // const axios = require('axios');
 server.use(
     session({
